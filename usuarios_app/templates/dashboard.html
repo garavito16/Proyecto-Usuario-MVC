@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Bienvenidos de vuelta {{session["nombre"]}} {{session["apellido"]}} al Himalaya</h2>
+    <h2>
+        Lista de Usuarios
+    </h2>
+    <ul>
+        {% for usuario in usuarios: %}
+            <li>{{usuario.nombre}} {{usuario.apellido}}</li>
+            <form method="POST" action="/usuario/remover/{{usuario.nombreUsuario}}">
+                <button>Remover</button>
+            </form>
+            <form action="/usuario/editar/{{usuario.nombreUsuario}}">
+                <button>Editar</button>
+            </form>
+        {% endfor %}
+    </ul>
+    <form action="/departamentos" method="GET">
+        <button>Ir a seccion de departamentos</button>
+    </form>
+    <form action="/logout" method="GET">
+        <button type="submit">
+            Logout
+        </button>
+    </form>
+</body>
+</html>
